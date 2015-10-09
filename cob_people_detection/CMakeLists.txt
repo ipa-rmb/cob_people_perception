@@ -34,7 +34,7 @@ set(catkin_BUILD_PACKAGES
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
+find_package(catkin REQUIRED COMPONENTS people_msgs
 	${catkin_BUILD_PACKAGES}
 )
 
@@ -307,6 +307,17 @@ target_link_libraries(coordinator_node
   ${catkin_LIBRARIES}
   ${Boost_LIBRARIES}
 )
+
+#######################################
+## add for rviz display ##
+add_executable(face_recognition_rviz_display
+  ros/src/face_recognition_rviz_display.cpp
+)
+target_link_libraries(face_recognition_rviz_display
+  ${catkin_LIBRARIES}
+  ${Boost_LIBRARIES}
+)
+#######################################
 
 # modified openni tracker
 #add_executable(openni_tracker
