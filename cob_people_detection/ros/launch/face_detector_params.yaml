@@ -21,7 +21,7 @@ faces_min_search_scale_y: 30
 # when this flag is activated, the 3d size of a face is determined and only reasonable sizes may continue in the processing pipeline
 # moreover, if activated, the background behind the head is cleared in the color image resulting in more robust recognition performance
 # bool
-reason_about_3dface_size: true
+reason_about_3dface_size: false
 
 # the maximum feasible face diameter [m] if reason_about_3dface_size is enabled
 # double
@@ -42,3 +42,7 @@ debug: false
 # display timing information
 # bool
 display_timing: false
+
+# openface folder
+# string
+openface_directory: "/home/cag/openface/openface/"
