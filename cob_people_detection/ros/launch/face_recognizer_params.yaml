@@ -1,3 +1,4 @@
+
 # this string allows to change the path to the Haar classifier model
 # string
 # data_directory: path_to_data -> please change this parameter in the launch file
@@ -19,9 +20,9 @@ metric: 0
 # bool
 debug: false
 
-#specifies subspace algorithm: 0 = Fisherfaces, 1 = Eigenfaces, 2 = LDA2D, 3 = PCA2D (attention: choices 0 and 1 work with a single person in the training data, options 2 and 3 will cause a crash of the program if you do not train at least 2 different people)
+#specifies subspace algorithm: 0 = Fisherfaces, 1 = Eigenfaces, 2 = LDA2D, 3 = PCA2D, 4 = Deep learning based online recognition (attention: choices 0 and 1 work with a single person in the training data, options 2 and 3 will cause a crash of the program if you do not train at least 2 different people)
 # int
-recognition_method: 2
+#recognition_method: 0
 
 
 # is unknown threshold supposed to be utilized: true = use unknown threshold, false = do not use threshold
@@ -56,4 +57,3 @@ norm_extreme_illumination: false
 # set dimension of features ( default )
 # bool
 feature_dimension: 15
-

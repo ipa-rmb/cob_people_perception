@@ -83,6 +83,7 @@ FaceCaptureNode::FaceCaptureNode(ros::NodeHandle nh)
 	bool norm_align;
 	bool norm_extreme_illumination;
 	int  norm_size;						// Desired width and height of the Eigenfaces (=eigenvectors).
+	int recognition_method; // choose subspace method
 
 	std::cout << "\n---------------------------\nFace Capture Node Parameters:\n---------------------------\n";
 	if(!node_handle_.getParam("data_storage_directory", data_directory_)) std::cout<<"PARAM NOT AVAILABLE"<<std::endl;
@@ -99,8 +100,13 @@ FaceCaptureNode::FaceCaptureNode(ros::NodeHandle nh)
 	std::cout << "debug = " << debug << "\n";
 	node_handle_.param("use_depth",use_depth,false);
 	std::cout<< "use depth: "<<use_depth<<"\n";
+	node_handle_.param("recognition_method", recognition_method, 3);
+	// if the recognition method is 5, kill this node
+	if (recognition_method==4) {
+		ROS_INFO("Online recognition method is selected! Killing Face Capture node!\n");
+		ros::shutdown();
+	}
 
-  
 	// face recognizer trainer
 	face_recognizer_trainer_.initTraining(data_directory_, norm_size,norm_illumination,norm_align,norm_extreme_illumination, debug, face_images_, face_depthmaps_, use_depth);
 
@@ -410,4 +416,3 @@ int main(int argc, char** argv)
 
 	return 0;
 }
-
