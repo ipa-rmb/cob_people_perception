@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<launch>
+ <arg name="camera_namespace" default=""/>
+ <arg name="in_topic_name" value="/face_detector/face_positions"/>
+ <arg name="recognition_method" />
+
+  <!-- learn and recognizes faces online and publish their positions -->
+  <node name="online_face_recognizer" pkg="cob_people_detection" type="online_face_recognition_node.py" output="screen">
+    <rosparam command="load" file="$(find cob_people_detection)/ros/launch/online_face_recognizer_params.yaml"/>
+    <remap from="~face_detector/face_positions" to="$(arg camera_namespace)$(arg in_topic_name)"/>
+    <remap from="~sensor_message_gateway/colorimage_out" to="$(arg camera_namespace)sensor_message_gateway/colorimage_out"/>
+    <param name="recognition_method" value="$(arg recognition_method)"/>
+  </node>
+
+</launch>

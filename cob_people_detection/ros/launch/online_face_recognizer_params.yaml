@@ -1,0 +1,55 @@
+################################################################################
+# Online people recognition parameters                                         #
+################################################################################
+
+# enable or disable online face recognition
+# bool
+enable_online_face_recognition: false
+
+# show the time spend on each loop of recognition
+# bool
+display_timing: true
+
+# set absolute max pitch value to disable training
+# double
+max_abs_pitch: 3.4
+
+# set absolute min pitch value to disable training#
+# double
+min_abs_pitch: 2.9
+
+# set absolute max roll value to disable training#
+# double
+max_abs_roll: 1
+
+# set absolute yaw value to disable training
+# double
+max_abs_yaw: 0.30
+
+# set the hard threshold. The scores below this are counted as recognitions
+# double
+hard_threshold: 0.65
+
+# set the soft threshold. The scores above this are counted as new people
+# double
+soft_threshold: 0.85
+
+# set the maximum nmber of features stored for each individual
+# int
+number_of_features_per_people: 20
+
+# eps value of DBSCAN algorithm
+# double
+eps: 0.60
+
+# minimum samples parameter of DBSCAN algorithm
+# int
+min_samples: 10
+
+# openface folder
+# string
+openface_directory: "/home/cag/openface/openface/"
+
+# recognition model folder
+# string
+model_directory: "/home/cag/.ros/"
