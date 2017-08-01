@@ -113,7 +113,7 @@ FaceRecognizerNode::FaceRecognizerNode(ros::NodeHandle nh) :
 	std::cout << "metric = " << metric << "\n";
 	node_handle_.param("debug", debug, false);
 	std::cout << "debug = " << debug << "\n";
-	node_handle_.param("recognition_method", recognition_method, 3);
+	node_handle_.param("recognition_method", recognition_method, 2);
 	// if the recognition method is 5, kill this node
 	if (recognition_method==4) {
 		ROS_INFO("Online recognition method is selected! Killing Face Recognizer node!\n");

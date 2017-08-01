@@ -21,8 +21,9 @@ metric: 0
 debug: false
 
 #specifies subspace algorithm: 0 = Fisherfaces, 1 = Eigenfaces, 2 = LDA2D, 3 = PCA2D, 4 = Deep learning based online recognition (attention: choices 0 and 1 work with a single person in the training data, options 2 and 3 will cause a crash of the program if you do not train at least 2 different people)
+# Important: This parameter is added to people_detection.launch as an argument. For example, It can be set as roslaunch cob_people_detection people_detection.launch recognition_method:=2
 # int
-#recognition_method: 0
+#recognition_method: 2
 
 
 # is unknown threshold supposed to be utilized: true = use unknown threshold, false = do not use threshold

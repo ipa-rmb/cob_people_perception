@@ -1,7 +1,10 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="recognition_method" />
+  <!-- #specifies face recognition algorithm: 0 = Fisherfaces, 1 = Eigenfaces, 2 = LDA2D, 3 = PCA2D, 4 = Deep learning based online recognition
+  (attention: choices 0 and 1 work with a single person in the training data, options 2 and 3 will cause a crash of the program if you do not train at least 2 different people)-->
+  <!-- This argument is used to just kill this node if the value is 4. So, there is no effect of it on the functionality of this node.-->
+  <arg name="recognition_method" default="2"/>
   <!-- face capture node (captures faces and stores them in the database) -->
   <node name="face_capture" pkg="cob_people_detection" type="face_capture_node" output="screen">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/face_recognizer_params.yaml"/>

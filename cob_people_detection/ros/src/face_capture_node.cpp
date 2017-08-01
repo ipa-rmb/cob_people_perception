@@ -100,7 +100,7 @@ FaceCaptureNode::FaceCaptureNode(ros::NodeHandle nh)
 	std::cout << "debug = " << debug << "\n";
 	node_handle_.param("use_depth",use_depth,false);
 	std::cout<< "use depth: "<<use_depth<<"\n";
-	node_handle_.param("recognition_method", recognition_method, 3);
+	node_handle_.param("recognition_method", recognition_method, 2);
 	// if the recognition method is 5, kill this node
 	if (recognition_method==4) {
 		ROS_INFO("Online recognition method is selected! Killing Face Capture node!\n");

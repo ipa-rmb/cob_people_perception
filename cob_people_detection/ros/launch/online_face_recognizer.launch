@@ -1,15 +1,15 @@
 <?xml version="1.0"?>
 
 <launch>
- <arg name="camera_namespace" default=""/>
- <arg name="in_topic_name" value="/face_detector/face_positions"/>
- <arg name="recognition_method" />
+ <arg name="face_positions_topic_name_in" value="/face_detector/face_positions"/>
+ <!-- specifies recognition algorithm: 0 = Fisherfaces, 1 = Eigenfaces, 2 = LDA2D, 3 = PCA2D, 4 = Deep learning based online recognition (attention: choices 0 and 1 work with a single person in the training data, options 2 and 3 will cause a crash of the program if you do not train at least 2 different people) -->
+ <arg name="recognition_method" default="2"/>
 
   <!-- learn and recognizes faces online and publish their positions -->
   <node name="online_face_recognizer" pkg="cob_people_detection" type="online_face_recognition_node.py" output="screen">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/online_face_recognizer_params.yaml"/>
-    <remap from="~face_detector/face_positions" to="$(arg camera_namespace)$(arg in_topic_name)"/>
-    <remap from="~sensor_message_gateway/colorimage_out" to="$(arg camera_namespace)sensor_message_gateway/colorimage_out"/>
+    <remap from="~face_detector/face_positions" to="$(arg face_positions_topic_name_in)"/>
+    <remap from="~sensor_message_gateway/colorimage_out" to="sensor_message_gateway/colorimage_out"/>
     <param name="recognition_method" value="$(arg recognition_method)"/>
   </node>
 

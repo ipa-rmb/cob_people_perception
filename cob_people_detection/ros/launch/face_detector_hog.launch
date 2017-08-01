@@ -1,13 +1,12 @@
 <?xml version="1.0"?>
 
 <launch>
-  <arg name="camera_namespace" default=""/>
-  <arg name="in_topic_name" value="/head_detector/head_positions"/>
+  <arg name="head_positions_in_topic_name" value="/head_detector/head_positions"/>
 
   <!-- face detection hog node (detects faces in color image and publishes their positions using dlib's face detector) -->
   <node name="face_detector_hog" pkg="cob_people_detection" type="face_detector_hog_node.py" output="screen">
     <rosparam command="load" file="$(find cob_people_detection)/ros/launch/face_detector_params.yaml"/>
     <param name="data_directory" type="string" value="$(find cob_people_detection)/common/files/"/>
-    <remap from="~head_positions" to="$(arg camera_namespace)$(arg in_topic_name)"/>
+    <remap from="~head_positions" to="$(arg head_positions_in_topic_name)"/>
   </node>
 </launch>
