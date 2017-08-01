@@ -48,7 +48,7 @@ hard_threshold: 0.65
 # double
 soft_threshold: 0.85
 
-# set the maximum nmber of features stored for each individual
+# set the maximum number of features stored for each individual
 # int
 number_of_features_per_people: 20
 
