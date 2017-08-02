@@ -214,7 +214,7 @@ class OpenFaceWrapper(object):
         #cv2.line(image, pts_1, pts_2, (255, 0, 0), 2)
 
         # Display image
-        cv2.imshow("Output", image)
-        cv2.waitKey(20)
+        #cv2.imshow("Output", image)
+        #cv2.waitKey(20)
 
         return rotation_vector
