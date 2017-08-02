@@ -45,15 +45,14 @@ for Care-O-bot default is cam3d_nodelet_manager -->
 
   <!-- remaining launch files -->
   <param name="data_storage_directory" type="string" value="$(env HOME)/.ros/cob_people_detection/files/"/>
-  <param name="face_detector_method" type="int" value="$(arg face_detector_method)"/> <!-- 0 -> hog: Histogram of Oriented Gradients,
-                                                              1 -> vj: viola-jones -->
+
   <!--Head detector-->
   <include if="$(arg launch_head_detector)" file="$(find cob_people_detection)/ros/launch/head_detector.launch"/>
 
   <!--Face detector-->
   <group if="$(arg launch_face_detector)">
-    <include if="$(arg face_detector_method)" file="$(find cob_people_detection)/ros/launch/face_detector_hog.launch"/>
-    <include unless="$(arg face_detector_method)" file="$(find cob_people_detection)/ros/launch/face_detector.launch"/>
+    <include unless="$(arg face_detector_method)" file="$(find cob_people_detection)/ros/launch/face_detector_hog.launch"/>
+    <include if="$(arg face_detector_method)" file="$(find cob_people_detection)/ros/launch/face_detector.launch"/>
   </group>
 
   <!--Face recognition-->
@@ -63,9 +62,7 @@ for Care-O-bot default is cam3d_nodelet_manager -->
     </include>
 
     <node pkg="cob_people_detection" type="toggle_online_learning_service_node.py" name="toggle_online_learning_service" output="screen" ns="online_face_recognizer"/>
-  </group>
 
-  <group>
     <include file="$(find cob_people_detection)/ros/launch/face_recognizer.launch">
       <arg name="recognition_method" value="$(arg recognition_method)"/>
     </include>

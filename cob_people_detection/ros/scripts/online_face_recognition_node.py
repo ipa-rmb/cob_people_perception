@@ -11,6 +11,8 @@ Author:
     Cagatay Odabasi -- cagatay.odabasi@ipa.fraunhofer.de
 """
 
+import os
+
 # ROS
 import rospy
 
@@ -244,8 +246,11 @@ class OnlineFaceRecognizerNode(object):
             rospy.get_param("~number_of_features_per_people")
         self.dbscan_eps = rospy.get_param("~eps")
         self.dbscan_min_samples = rospy.get_param("~min_samples")
-        self.openface_directory = rospy.get_param("~openface_directory")
-        self.model_directory = rospy.get_param("~model_directory")
+        self.openface_directory = os.getenv("HOME") + "openface/openface/"
+
+        self.model_directory = os.path.expanduser(\
+            rospy.get_param("~model_directory")\
+            )
 
         # if offline recognition is selected, shutdown this node
         self.shutdown(rospy.get_param("~recognition_method"))

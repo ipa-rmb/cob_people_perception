@@ -60,10 +60,6 @@ eps: 0.60
 # int
 min_samples: 10
 
-# openface folder
-# string
-openface_directory: "/home/cag/openface/openface/"
-
 # recognition model folder
 # string
-model_directory: "/home/cag/.ros/"
+model_directory: "~/.ros/"
