@@ -195,7 +195,7 @@ class FaceDetectorNode(object):
         face_size_min = rospy.get_param("~face_size_min_m")
         max_face_depth = rospy.get_param("~max_face_z_m")
         display_timing = rospy.get_param("~display_timing")
-        openface_directory = os.getenv("HOME") + "openface/openface/"
+        openface_directory = os.path.expanduser("~/openface/")
 
         return (reason_about_3dface_size, face_size_max, face_size_min,\
             max_face_depth, display_timing, openface_directory)

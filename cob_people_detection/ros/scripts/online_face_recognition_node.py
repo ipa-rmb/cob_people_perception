@@ -246,7 +246,7 @@ class OnlineFaceRecognizerNode(object):
             rospy.get_param("~number_of_features_per_people")
         self.dbscan_eps = rospy.get_param("~eps")
         self.dbscan_min_samples = rospy.get_param("~min_samples")
-        self.openface_directory = os.getenv("HOME") + "openface/openface/"
+        self.openface_directory = os.path.expanduser("~/openface/")
 
         self.model_directory = os.path.expanduser(\
             rospy.get_param("~model_directory")\
