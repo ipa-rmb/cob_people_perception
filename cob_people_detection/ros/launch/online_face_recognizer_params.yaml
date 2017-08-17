@@ -10,6 +10,9 @@ enable_online_face_recognition: false
 # bool
 display_timing: true
 
+
+# Note that you need to tune following parameters according to your system 
+
 # set absolute max pitch value to disable training
 # For the values higher than this pitch value, the learning is not working,
 # since the quality of features extracted from that face will be low in quality.
