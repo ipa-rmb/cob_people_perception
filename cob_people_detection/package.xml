@@ -15,7 +15,7 @@
 	<url>http://ros.org/wiki/cob_people_detection</url>
 
 	<buildtool_depend>catkin</buildtool_depend>
-	
+
 	<depend>actionlib</depend>
 	<depend>actionlib_msgs</depend>
 	<depend>boost</depend>
@@ -40,6 +40,7 @@
 	<depend>std_srvs</depend>
 	<depend>stereo_msgs</depend>
 	<depend>tf</depend>
+	<depend>libopenface</depend>
 
 	<exec_depend>message_runtime</exec_depend>
 	<exec_depend>image_view</exec_depend>
@@ -48,5 +49,3 @@
 		<nodelet plugin="${prefix}/nodelet_plugins.xml" />
 	</export>
 </package>
-
-

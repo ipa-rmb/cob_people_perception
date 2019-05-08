@@ -1,0 +1,68 @@
+################################################################################
+# Online people recognition parameters                                         #
+################################################################################
+
+# enable or disable online face recognition
+# bool
+enable_online_face_recognition: false
+
+# show the time spend on each loop of recognition
+# bool
+display_timing: true
+
+
+# Note that you need to tune following parameters according to your system 
+
+# set absolute max pitch value to disable training
+# For the values higher than this pitch value, the learning is not working,
+# since the quality of features extracted from that face will be low in quality.
+# double
+max_abs_pitch: 3.4
+
+# set absolute min pitch value to disable training
+# For the values lower than this pitch value, the learning is not working,
+# since the quality of features extracted from that face will be low in quality.
+# double
+min_abs_pitch: 2.9
+
+# set absolute max roll value to disable training
+# For the values higher than this roll value, the learning is not working,
+# since the quality of features extracted from that face will be low in quality.
+# double
+max_abs_roll: 1
+
+# set absolute yaw value to disable training
+# For the values higher than this yaw value, the learning is not working,
+# since the quality of features extracted from that face will be low in quality.
+# double
+max_abs_yaw: 0.30
+
+# set the hard threshold. The scores below this are counted as recognitions
+# A distance is calculated between the test face and for the each entry in
+# dataset. The distance values lower than hard threshold are considered as
+# features of same face in other words as a match.
+# double
+hard_threshold: 0.65
+
+# A distance is calculated between the test face and for the each entry in
+# dataset. The distance values higher than soft threshold are considered as
+# features of different faces in other words as a not match.
+# set the soft threshold. The scores above this are counted as new people
+# double
+soft_threshold: 0.85
+
+# set the maximum number of features stored for each individual
+# int
+number_of_features_per_people: 20
+
+# eps value of DBSCAN algorithm
+# double
+eps: 0.60
+
+# minimum samples parameter of DBSCAN algorithm
+# int
+min_samples: 10
+
+# recognition model folder
+# string
+model_directory: "~/.ros/"

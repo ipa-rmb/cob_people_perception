@@ -113,7 +113,12 @@ FaceRecognizerNode::FaceRecognizerNode(ros::NodeHandle nh) :
 	std::cout << "metric = " << metric << "\n";
 	node_handle_.param("debug", debug, false);
 	std::cout << "debug = " << debug << "\n";
-	node_handle_.param("recognition_method", recognition_method, 3);
+	node_handle_.param("recognition_method", recognition_method, 2);
+	// if the recognition method is 5, kill this node
+	if (recognition_method==4) {
+		ROS_INFO("Online recognition method is selected! Killing Face Recognizer node!\n");
+		ros::shutdown();
+	}
 	std::cout << "recognition method: " << recognition_method << "\n";
 	node_handle_.param("use_unknown_thresh", use_unknown_thresh, true);
 	std::cout << " use use unknown thresh: " << use_unknown_thresh << "\n";
@@ -165,7 +170,6 @@ FaceRecognizerNode::FaceRecognizerNode(ros::NodeHandle nh) :
 	load_model_server_ = new LoadModelServer(node_handle_, "load_model_server", boost::bind(&FaceRecognizerNode::loadModelServerCallback, this, _1), false);
 	load_model_server_->start();
 	ROS_INFO("FaceRecognizerNode initialized.");
-
 
 	// advertise topics
 	face_recognition_publisher_ = node_handle_.advertise<cob_perception_msgs::DetectionArray>("face_recognitions", 1);
